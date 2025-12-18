@@ -197,7 +197,7 @@
             letter-spacing: 1px;
         }
 
-        .coming-soon {
+        .other {
             opacity: 0.7;
             font-size: 0.9rem;
         }
@@ -376,8 +376,8 @@
             margin-left: 5px;
         }
 
-        /* Coming Soon Section */
-        .coming-soon-section {
+        /* Other Section */
+        .other-section {
             background: var(--dark-surface);
             border-radius: 10px;
             padding: 2rem;
@@ -386,18 +386,18 @@
             transition: var(--transition);
         }
 
-        body.light-mode .coming-soon-section {
+        body.light-mode .other-section {
             background: var(--light-surface);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .coming-soon-grid {
+        .other-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
-        .coming-soon-card {
+        .other-card {
             background: var(--dark-bg);
             border-radius: 8px;
             padding: 1.5rem;
@@ -407,32 +407,32 @@
             opacity: 0.8;
         }
 
-        body.light-mode .coming-soon-card {
+        body.light-mode .other-card {
             background: var(--light-bg);
         }
 
-        .coming-soon-card:hover {
+        .other-card:hover {
             opacity: 1;
             transform: scale(1.02);
         }
 
-        .coming-soon-card i {
+        .other-card i {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
-        .coming-soon-card h3 {
+        .other-card h3 {
             color: var(--secondary-color);
             margin-bottom: 0.5rem;
         }
 
-        .coming-soon-card p {
+        .other-card p {
             color: var(--dark-text);
             font-size: 0.9rem;
         }
 
-        body.light-mode .coming-soon-card p {
+        body.light-mode .other-card p {
             color: var(--light-text);
         }
 
@@ -489,7 +489,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .coming-soon-grid {
+            .other-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -506,7 +506,7 @@
             <ul class="nav-menu">
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#projects">List Project</a></li>
-                <li><a href="#coming-soon">Coming Soon</a></li>
+                <li><a href="#other">Other</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle">
                         <i class="fas fa-moon"></i>
