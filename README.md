@@ -1,5 +1,6 @@
 # My-Web
 My-Portofolio and Others
 
+- Python Dev
 - Zig Dev
-- Pentest
+- Pentest/Red Team
