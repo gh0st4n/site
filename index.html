@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gh0sT4n Dev - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Portofolio Gh0sT4n - Muhammad Luthfi Fakhmar">
+    <link rel="icon" href="Gh0sT4n.png" type="image/svg+xml">
     <style>
         :root {
             --primary-color: #4ade80;
@@ -227,6 +229,30 @@
             background: var(--light-surface);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
+       .kofi-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #29abe0;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .kofi-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: #1a87b8;
+        }
+
+        .kofi-button img {
+            height: 24px;
+            margin-right: 8px;
+        }
 
         .profile-container {
             display: flex;
@@ -297,7 +323,7 @@
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
-        }
+        }darskevoid
 
         body.light-mode .projects-section {
             background: var(--light-surface);
@@ -537,9 +563,13 @@
     <main>
         <section id="about" class="about-section">
             <div class="profile-container">
-                <img src="assets/Gh0st.png" alt="Zig Dev" class="profile-img">
+                <img src="https://github.com/gh0st4n.png" alt="Zig Dev" class="profile-img">
                 <h1 class="profile-name">Gh0sT4n Dev</h1>
                 <p class="profile-title">Hacker & Developer</p>
+                <a href="https://ko-fi.com/gh0st4n" target="_blank" class="kofi-button">
+                    <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" alt="Ko-fi Logo">
+                    Support Me on Ko-fi
+                </a>
             </div>
             
             <div class="profile-info">
@@ -552,12 +582,12 @@
                     <span>Siswa <a href="https://maps.app.goo.gl/Jqn61EQe4vL1wGSY8" target="_blank">SMKN 5 Takengon</a></span>
                 </div>
                 <div class="info-item">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub: <a href="https://github.com/gh0st4n/" target="_blank">Gh0sT4n</a></span>
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn: <a href="https://www.linkedin.com/in/m-luthfi-fakhmar/" target="_blank">Muhammad Luthfi Fakhmar</a></span>
                 </div>
                 <div class="info-item">
-                    <i class="fab fa-discord"></i>
-                    <span>Discord: <a href="https://discord.gg/fwsdP6xKGW" target="_blank">Gh0sT4n</a></span>
+                    <i class="fa-brands fa-reddit"></i>
+                    <span>Reddit: <a href="#" target="_blank">Gh0sT4n</a></span>
                 </div>
                 <div class="info-item">
                     <i class="fab fa-youtube"></i>
@@ -565,11 +595,15 @@
                 </div>
                 <div class="info-item">
                     <i class="fab fa-instagram"></i>
-                    <span>Instagram: <a href="https://www.instagram.com/zig_vr0g" target="_blank">Zig Vr0g</a></span>
+                    <span>Instagram: <a href="https://www.instagram.com/gh0st4n_" target="_blank">gh0st4n_</a></span>
                 </div>
                 <div class="info-item">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn: <a href="https://www.linkedin.com/in/muhammad-luthfi-fakhmar/" target="_blank">Muhammad Luthfi Fakhmar</a></span>
+                    <i class="fab fa-github"></i>
+                    <span>GitHub: <a href="https://github.com/gh0st4n/" target="_blank">Gh0sT4n</a></span>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord: <a href="https://discord.gg/fwsdP6xKGW" target="_blank">Gh0sT4n</a></span>
                 </div>
             </div>
         </section>
@@ -577,20 +611,20 @@
         <section id="projects" class="projects-section">
             <h2 class="section-title">My Project</h2>
             
-            <h3 style="color: var(--secondary-color); margin: 1.5rem 0 1rem;">Project Utama</h3>
+            <h3 style="color: var(--secondary-color); margin: 1.5rem 0 1rem;">Main Project</h3>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3 class="project-title">T4n OS</h3>
                     <p class="project-description">Sistem operasi berbasis Void Linux yang dikustomisasi dengan berbagai peningkatan dan fitur tambahan.</p>
-                    <a href="https://t4n-os.github.io/T4n_OS/" target="_blank" class="project-link">
+                    <a href="https://t4n-company.github.io/t4n-os/" target="_blank" class="project-link">
                         Lihat Proyek <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
                     
                 <div class="project-card">
                     <h3 class="project-title">Ecosystem T4n OS</h3>
-                    <p class="project-description">Ekosistem lengkap untuk T4n OS yang mencakup berbagai aplikasi dan utilitas (dalam perencanaan).</p>
-                    <a href="https://t4n-os.github.io/VUR/" target="_blank" class="project-link">
+                    <p class="project-description">Ekosistem Void Linux/T4n OS - Void User Repository yang mencakup berbagai aplikasi dan utilitas (Tahap Pengembangan).</p>
+                    <a href="https://github.com/t4n-company/VUR/" target="_blank" class="project-link">
                         Lihat Proyek <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
@@ -598,12 +632,24 @@
                 <div class="project-card">
                     <h3 class="project-title">VUR Helper</h3>
                     <p class="project-description">Tools Helper untuk mempermudah penggambilan dan build template dari VUR, seperti AUR-Helper.</p>
-                    <a href="https://t4n-os.github.io/VUR-Helper" target="_blank" class="project-link">
+                    <a href="https://github.com/t4n-company/VUR-Helper" target="_blank" class="project-link">
                         Lihat Proyek <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
         </section>
+
+        <!-- <section id="projects" class="projects-section"> -->
+        <!--     <h3 style="color: var(--secondary-color); margin: 1.5rem 0 1rem;">Side Project</h3> -->
+        <!--     <div class="projects-grid"> -->
+        <!--         <div class="project-card"> -->
+        <!--             <h3 class="project-title">Project 1</h3> -->
+        <!--             <p class="project-description">Side Project 1</p> -->
+        <!--             <a href="https://t4n-company.github.io/t4n-os/" target="_blank" class="project-link"> -->
+        <!--                 Lihat Proyek <i class="fas fa-external-link-alt"></i> -->
+        <!--             </a> -->
+        <!--         </div> -->
+        <!-- </section> -->
 
         <section id="other" class="other-section">
             <h2 class="section-title">Other</h2>
@@ -612,36 +658,28 @@
                     <i class="fas fa-book"></i>
                     <h3>Main Guide Web</h3>
                     <p>Main Page Guide Website.</p>
-                    <a href="https://gh0st4n.github.io/Guide-Web" target="_blank" class="project-link">
-                        Lihat Proyek <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <a href="https://gh0st4n.github.io/Guide-Web" target="_blank" class="project-link">Lihat Proyek</a>
                 </div>
                 
                 <div class="other-card">
                     <i class="fas fa-book"></i>
                     <h3>Zig Guide</h3>
                     <p>Panduan lengkap untuk mempelajari bahasa pemrograman Zig.</p>
-                    <a href="https://gh0st4n.github.io/Guide-Web/#" target="_blank" class="project-link">
-                        Lihat Proyek <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <a href="https://gh0st4n.github.io/Guide-Web/zig/index.html" target="_blank" class="project-link">Lihat Proyek</a>
                 </div>
 
                 <div class="other-card">
                     <i class="fas fa-book"></i>
                     <h3>Python Guide</h3>
                     <p>Panduan lengkap untuk mempelajari bahasa pemrograman Python.</p>
-                    <a href="https://gh0st4n.github.io/Guide-Web/#" target="_blank" class="project-link">
-                        Lihat Proyek <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <a href="https://gh0st4n.github.io/Guide-Web/python/index.html" target="_blank" class="project-link">Lihat Proyek</a>
                 </div>
                 
                 <div class="other-card">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Hacking Guide</h3>
                     <p>Tutorial dan panduan ethical hacking untuk keamanan siber dan penetration testing.</p>
-                    <a href="https://gh0st4n.github.io/Guide-Web/#" target="_blank" class="project-link">
-                        Lihat Proyek <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <a href="https://gh0st4n.github.io/Guide-Web/hacking/index.html" target="_blank" class="project-link">Lihat Website</a>
                 </div>
             </div>
         </section>
