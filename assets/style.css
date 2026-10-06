@@ -1,0 +1,1297 @@
+/* ══════════════════════════════════════════════════════════════
+   PORTOFOLIO GH0ST4N — STYLESHEET
+   ──────────────────────────────────────────────────────────────
+   DAFTAR ISI:
+   01. Variabel & Reset ......... warna, font, reset dasar
+   02. Utilities ................ container, komponen umum
+   03. Tombol ................... .btn & varian outline
+   04. Animasi .................. keyframes + fade-in-up
+   05. Navbar ................... fixed nav + hamburger
+   06. Hero ..................... judul, typewriter, indikator
+   07. About .................... bio, avatar, stat card
+   08. Projects ................. kartu proyek
+   09. Skills ................... kategori skill
+   10. Certificates ............. kartu sertifikat
+   11. Lightbox ................. modal gambar/PDF sertifikat
+   12. Contact .................. kartu kontak + sosmed
+   13. Footer
+   14. GitHub Activity .......... tahun, stats, heatmap, bahasa
+   15. Responsive ............... tablet / mobile / aksesibilitas
+
+   CATATAN DEVELOPMENT:
+   - Ganti tema warna → cukup edit :root (bagian 01)
+   - Section baru → styling-nya taruh di bagian sendiri,
+     urutannya ikut urutan section di index.html
+   ══════════════════════════════════════════════════════════════ */
+
+/* ─────────────── 01. VARIABEL & RESET ─────────────── */
+:root {
+  /* Palette warna — SATU-SATUNYA tempat ganti tema */
+  --bg-main: #0a0a0f;
+  --bg-card: #10101a;
+  --bg-accent: #14141f;
+  --primary: #7c3aed; /* ungu utama  */
+  --secondary: #a855f7; /* ungu terang */
+  --accent-cyan: #22d3ee; /* aksen cyan  */
+
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+
+  --border: #1e1e2e;
+  --glow: rgba(124, 58, 237, 0.15);
+
+  /* Typography */
+  --font-heading: "JetBrains Mono", monospace;
+  --font-body: "Inter", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden; /* cegah scroll horizontal */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ─────────────── 02. UTILITIES ─────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-padding {
+  padding: 80px 0;
+}
+
+.text-cyan {
+  color: var(--accent-cyan);
+}
+.text-purple {
+  color: var(--secondary);
+}
+
+.mono {
+  font-family: var(--font-heading);
+}
+
+/* Komponen umum section — dipakai semua section */
+.section-header {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--primary);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+/* Kartu statistik — dipakai di About & GitHub Activity */
+.stat-card {
+  background: var(--bg-card);
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ─────────────── 03. TOMBOL ─────────────── */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid var(--primary);
+  color: var(--text-main);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* efek isi warna menyapu dari kiri saat hover */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--primary);
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn:hover {
+  box-shadow: 0 0 15px var(--glow);
+  border-color: var(--secondary);
+  color: #fff;
+}
+
+/* varian outline cyan */
+.btn-outline {
+  border-color: var(--accent-cyan);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-cyan);
+}
+
+.btn-outline::before {
+  background: var(--accent-cyan);
+}
+
+/* ─────────────── 04. ANIMASI ─────────────── */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Scroll reveal — elemen ber-class .fade-in-up akan muncul
+   saat masuk viewport (dipicu JS: initScrollReveal).
+   ⚠ PENTING: class ini harus ada di HTML sejak awal load.
+   Kalau elemennya dibuat via JS, observer gak akan kenal. */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────── 05. NAVBAR ─────────────── */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 15px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-main);
+}
+
+/* garis cyan menyala di bawah link aktif/hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* hamburger — cuma keliatan di mobile (lihat bagian 15) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--text-main);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ─────────────── 06. HERO ─────────────── */
+#home {
+  /* fallback browser lama dulu, baru versi mobile-friendly.
+     svh = tinggi viewport NYATA (tanpa ruang URL bar di HP) */
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 60px; /* offset navbar fixed */
+}
+
+/* canvas partikel (digambar JS: initParticles) */
+#particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* overlay garis scan ala CRT */
+.scanline-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(10, 10, 15, 0.5) 51%
+  );
+  background-size: 100% 4px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 1;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.hero-greeting {
+  font-family: var(--font-heading);
+  color: var(--accent-cyan);
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  word-wrap: break-word;
+}
+
+.hero-tagline {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  min-height: 1.6em; /* cegah layout lompat saat teks masih kosong */
+}
+
+/* kursor ketik berkedip */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  background-color: var(--accent-cyan);
+  animation: blink 1s infinite;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* indikator scroll di pojok KANAN bawah hero */
+.scroll-indicator {
+  position: absolute; /* lepas dari alur flex hero */
+  right: 60px; /* jarak dari sisi kanan */
+  bottom: 45px; /* jarak dari bawah */
+  animation: bounce 2s infinite;
+  color: var(--text-muted);
+  z-index: 1;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  color: var(--accent-cyan);
+}
+
+/* ─────────────── 07. ABOUT ─────────────── */
+#about {
+  background-color: var(--bg-main);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* kolom avatar lebih sempit */
+  gap: 50px;
+  align-items: center;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--bg-accent);
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 20px var(--glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop gambar biar pas lingkaran */
+  display: block;
+}
+
+/* ring dashed cyan yang muter muter avatar */
+.avatar::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px dashed var(--accent-cyan);
+  animation: rotate 10s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.about-bio {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* kotak highlight pendidikan */
+.alumni-box {
+  background: rgba(34, 211, 238, 0.05);
+  border-left: 3px solid var(--accent-cyan);
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 0 4px 4px 0;
+}
+
+.alumni-label {
+  font-family: var(--font-heading);
+  color: var(--accent-cyan);
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.alumni-text {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* ─────────────── 08. PROJECTS ─────────────── */
+#projects {
+  background-color: var(--bg-accent);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px -10px var(--glow);
+}
+
+.project-badge {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  background: rgba(124, 58, 237, 0.2);
+  color: var(--secondary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: fit-content;
+}
+
+.project-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.project-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+/* chips teknologi — dipakai juga di bagian lain */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  background: rgba(34, 211, 238, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* baris link bawah kartu — dipakai juga di Certificates */
+.project-links {
+  display: flex;
+  gap: 15px;
+  border-top: 1px solid var(--border);
+  padding-top: 15px;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  position: relative;
+}
+
+.project-link:hover {
+  color: var(--secondary);
+}
+
+/* ─────────────── 09. SKILLS ─────────────── */
+#skills {
+  background-color: var(--bg-main);
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.skill-category h4 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  font-size: 1rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* prefix ">" ungu di tiap item */
+.skill-item {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-item::before {
+  content: ">";
+  color: var(--primary);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+}
+
+/* ─────────────── 10. CERTIFICATES ─────────────── */
+#certificates {
+  background-color: var(--bg-accent);
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px -10px var(--glow);
+}
+
+/* kotak ikon ungu di atas kartu */
+.cert-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.cert-icon i {
+  font-size: 1.6rem;
+  color: var(--secondary);
+}
+
+.cert-issuer {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cert-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+/* flex-grow: biar blok link selalu sejajar di dasar kartu */
+.cert-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.cert-meta {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 15px;
+  margin-bottom: 15px;
+}
+
+.cert-meta i {
+  color: var(--primary);
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.cert-links {
+  display: flex;
+  gap: 15px;
+}
+
+/* ─────────────── 11. LIGHTBOX ───────────────
+   Modal sertifikat full-screen. Elemen <div class="lightbox">
+   dibuat lewat JS (initLightbox) — CSS-nya disiapkan di sini. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* margin:auto = center + tetap bisa discroll saat zoom */
+.lightbox-content {
+  margin: auto;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: min(92vw, 1000px);
+  max-height: 80vh;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  cursor: zoom-in;
+}
+
+/* mode zoom: gambar ukuran asli, bisa discroll keliling */
+.lightbox.zoomed .lightbox-img {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+
+/* khusus file PDF (auto-detect dari ekstensi) */
+.lightbox-iframe {
+  width: min(92vw, 900px);
+  height: 80vh;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3100;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+/* max-width + ellipsis: caption panjang gak kepotong mentah di HP */
+.lightbox-caption {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  max-width: 92vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lightbox-error {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ─────────────── 12. CONTACT ─────────────── */
+#contact {
+  background-color: var(--bg-accent);
+  text-align: center;
+}
+
+.contact-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 40px 20px;
+  border-radius: 8px;
+}
+
+.contact-text {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+/* 2 tombol per baris; teks center karena grid melebarkan tombol */
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.social-links .btn {
+  text-align: center;
+}
+
+/* ─────────────── 13. FOOTER ─────────────── */
+footer {
+  padding: 40px 0;
+  background-color: var(--bg-main);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.footer-sub {
+  color: var(--primary);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+}
+
+/* ─────────────── 14. GITHUB ACTIVITY ─────────────── */
+#github {
+  background-color: var(--bg-accent);
+}
+
+/* kartu pembungkus semua konten activity */
+.github-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 25px;
+}
+
+/* --- tombol pemilih periode: [ Last ] [ 2026 ] [ 2025 ] --- */
+.gh-years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.gh-year-btn {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gh-year-btn:hover {
+  border-color: var(--secondary);
+  color: var(--text-main);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.gh-year-btn.active {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: rgba(34, 211, 238, 0.1);
+}
+
+/* --- statistik (Total / This Week / Best Day / Average) --- */
+.gh-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* override: stat-card di dalam kartu perlu beda bg biar keliatan */
+.gh-stats .stat-card {
+  background: var(--bg-accent);
+}
+
+/* --- heatmap --- */
+.heatmap-scroll {
+  overflow-x: auto; /* heatmap bisa geser di layar sempit */
+  padding-bottom: 5px;
+}
+
+/* STATE LOADING (ganti periode): heatmap lama diredupkan halus.
+   TRIK: transition CUMA didefinisikan di state ini, bukan di
+   base — jadi saat class dilepas, opacity langsung balik 1
+   tanpa transisi, dan kemunculan diserahkan ke animasi cell-in.
+   ⚠ 0.2s harus SAMA dengan HEATMAP_FADE_MS di script.js */
+.heatmap-scroll.is-loading {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* hint "← geser →" — disembunyikan, dimunculkan CSS mobile (bagian 15) */
+.heatmap-hint {
+  display: none;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 4px;
+}
+
+/* baris label bulan: 1 span = 1 minggu (sejajar kolom grid) */
+.heatmap-months {
+  display: flex;
+  gap: 3px;
+  width: max-content;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.heatmap-months span {
+  width: 12px;
+  flex: none;
+}
+
+/* grid: 7 baris (hari) × N kolom (minggu), isi per kolom */
+.heatmap {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  grid-auto-flow: column;
+  grid-auto-columns: 12px;
+  gap: 3px;
+  width: max-content;
+}
+
+/* kotak kontribusi — level 0 (kosong) pakai warna border */
+.cell {
+  border-radius: 2px;
+  background: var(--border);
+  transition: transform 0.15s ease;
+}
+
+.cell:hover {
+  outline: 1px solid var(--accent-cyan);
+  transform: scale(1.25);
+}
+
+/* level 1-4 — gradasi ungu sesuai tema.
+   Alternatif hijau GitHub asli: #0e4429 #006d32 #26a641 #39d353 */
+.lvl-1 {
+  background: #3a2a63;
+}
+.lvl-2 {
+  background: #5b3a9e;
+}
+.lvl-3 {
+  background: var(--primary);
+}
+.lvl-4 {
+  background: var(--secondary);
+}
+
+/* TRANSISI GANTI PERIODE (fade + gelombang).
+   Keyframe pakai properti 'scale' (bukan 'transform') supaya
+   hover zoom .cell yang pakai 'transform' tetap berfungsi —
+   dua properti ini terpisah dan saling melengkapi. */
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    scale: 0.3;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* 'backwards' = kotak diam transparan selama delay-nya
+   (belum giliran) → efek gelombang kiri ke kanan */
+.heatmap .cell,
+.heatmap-months span {
+  animation: cell-in 0.24s ease backwards;
+}
+
+/* legenda Less → More */
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.heatmap-legend .cell {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+}
+
+/* tooltip yang ngikutin kursor (elemennya dibuat via JS) */
+.gh-tooltip {
+  position: fixed;
+  z-index: 2000;
+  background: var(--bg-accent);
+  border: 1px solid var(--primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+/* --- most used languages (bar chart) --- */
+.gh-langs {
+  margin-top: 30px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.gh-langs h4 {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.lang-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.lang-name {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  width: 120px;
+  color: var(--text-muted);
+}
+
+.lang-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* width: 0 → diisi lewat JS (animasi mengisi saat masuk) */
+.lang-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent-cyan));
+  transition: width 1s ease;
+}
+
+.lang-count {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+  width: 70px;
+  text-align: right;
+}
+
+/* pesan error / state kosong */
+.gh-error {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* link profil di kaki kartu activity */
+.gh-footer {
+  margin-top: 25px;
+  border-top: 1px solid var(--border);
+  padding-top: 15px;
+  text-align: right;
+}
+
+/* ─────────────── 15. RESPONSIVE ─────────────── */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 7 link navbar mepet di range ini — rapatkan */
+  .nav-links {
+    gap: 18px;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* menu dropdown */
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background: var(--bg-card);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* about: jadi 1 kolom */
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-bio {
+    text-align: justify;
+  }
+
+  .alumni-box {
+    text-align: left;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* hero & tombol full-width */
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  /* indikator scroll: lebih nempel pojok di layar kecil */
+  .scroll-indicator {
+    right: 25px;
+    bottom: 25px;
+  }
+
+  /* kontak & github: 1-2 kolom */
+  .social-links {
+    grid-template-columns: 1fr;
+  }
+
+  .gh-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lang-name {
+    width: 90px;
+  }
+
+  .lang-count {
+    width: auto;
+  }
+
+  /* hint geser heatmap: muncul hanya di mobile */
+  .heatmap-hint {
+    display: block;
+  }
+}
+
+/* Mobile kecil */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero-name {
+    font-size: 2.5rem;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .project-links,
+  .project-tags {
+    justify-content: center;
+  }
+}
+
+/* Aksesibilitas: hormati user yang mematikan animasi di OS-nya */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-indicator,
+  .avatar::after {
+    animation: none;
+  }
+
+  .heatmap .cell,
+  .heatmap-months span {
+    animation: none;
+  }
+
+  .heatmap-scroll.is-loading {
+    transition: none;
+  }
+}
